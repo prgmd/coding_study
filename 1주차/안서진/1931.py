@@ -8,7 +8,7 @@ for _ in range(N):
     x, y = map(int, input().split())
     arr.append([x,y])
 
-sorted_arr = sorted(arr, key = lambda x: x[1])
+sorted_arr = sorted(arr, key = lambda x: (x[1],x[0]))
 
 cnt = 1
 now_x, now_y = sorted_arr[0]
