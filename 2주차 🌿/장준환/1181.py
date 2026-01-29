@@ -1,1 +1,5 @@
-# 여기에 코드를 입력해주세요.
+import sys
+input = sys.stdin.readline
+
+for a in sorted(sorted(list(set([input().strip() for _ in range(int(input()))]))), key=lambda x:len(x)):
+    print(a)
