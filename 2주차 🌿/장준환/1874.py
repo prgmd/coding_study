@@ -2,24 +2,37 @@ import sys
 input = sys.stdin.readline
 
 n = int(input())
-stack = []
-answer = []
-num = 1
+number = [i for i in range(n, 0, -1)]
+ideal = []
 
 for _ in range(n):
-    now = int(input())
-    
-    while num <= now:
-        stack.append(num)
-        answer.append('+')
-        num += 1
-    
-    if stack[-1] == now:
-        stack.pop()
-        answer.append('-')
-    else:
-        print('NO')
-        exit()
+    ideal.append(int(input()))
 
-for a in answer:
-    print(a)
+ideal_stack = []
+stack = []
+answer = []
+idx = 0
+
+while number:
+    now = number.pop()
+    if now == ideal[idx]:
+        idx += 1
+        ideal_stack.append(now)
+        answer.append('+')
+        answer.append('-')
+        while stack:
+            if stack[-1] == ideal[idx]:
+                ideal_stack.append(stack.pop())
+                idx += 1
+                answer.append('-')
+            else:
+                break
+    else:
+        stack.append(now)
+        answer.append('+')
+
+if ideal == ideal_stack:
+    for a in answer:
+        print(a)
+else:
+    print('NO')
