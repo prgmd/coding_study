@@ -1,0 +1,5 @@
+# 브론즈2
+
+sentence = list(input().split())
+
+print(len(sentence))
